@@ -2910,7 +2910,7 @@ class _Method:
                     Feedback=CMQC.MQFB_NONE,
                     Expiry=self.__pcf.response_wait_interval // 100,
                     Report=CMQC.MQRO_PASS_DISCARD_AND_EXPIRY | CMQC.MQRO_DISCARD_MSG)
-        put_opts = PMO(Options=CMQC.MQPMO_NO_SYNCPOINT)
+        put_opts = PMO(Options=CMQC.MQPMO_NO_SYNCPOINT | CMQC.MQPMO_FAIL_IF_QUIESCING)
 
         command_queue.put(message, put_md, put_opts)
         command_queue.close()
